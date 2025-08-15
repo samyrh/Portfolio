@@ -33,6 +33,7 @@ import archi from "./company/archi.png";
 import bts from "./company/bts.png";
 import est from "./company/est.png";
 import ministre from "./company/ministre.png";
+import s from "./company/s.png";
 
 
 import carrent from "./carrent.png";
@@ -66,6 +67,7 @@ export {
   tailwind,
   typescript,
   threejs,
+    s,
   meta,
   shopify,
   starbucks,

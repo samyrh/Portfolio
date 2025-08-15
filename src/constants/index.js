@@ -214,69 +214,26 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Car Rent",
+    name: "Intelligent e-Banking Platform — Web & Mobile (HPS)",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "Design and development of a secure, intelligent e-Banking platform for advanced VISA card management. Microservices in Java/Spring Boot & Spring Cloud, Spring Batch (ETL), Kafka (event streaming), Redis (caching), and PostgreSQL pgvector (semantic search). GPT-4o RAG assistant, OAuth2/JWT security, NLP for transaction classification, and PowerCARD integration via IBM WebSphere with real-time Kafka flows. Web (React + Redux) and mobile (Flutter) clients.",
     tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
+      { name: "java",          color: "blue-text-gradient" },
+      { name: "springboot",    color: "green-text-gradient" },
+      { name: "microservices", color: "pink-text-gradient" },
+      { name: "kafka",         color: "blue-text-gradient" },
+      { name: "redis",         color: "green-text-gradient" },
+      { name: "postgresql",    color: "pink-text-gradient" },
+      { name: "RAG",           color: "blue-text-gradient" },
+      { name: "oauth2_jwt",    color: "green-text-gradient" },
+      { name: "react",         color: "pink-text-gradient" },
+      { name: "flutter",       color: "blue-text-gradient" },
     ],
-    image: carrent,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Job IT",
-    description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: jobit,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
+    image: hps,               // replace with a real screenshot if available
+    source_code_link: "",     // leave empty if private
   },
 ];
+
 // ---------------------------
 // NEW: Education timeline data
 // ---------------------------
@@ -331,7 +288,7 @@ const educations = [
   },
   {
     degree: "Scientific Baccalaureate – Physics & Chemistry",
-    school: "High School (Académie Laâyoune-Sakia El Hamra)",
+    school: "Med V High School",
     city: "Laâyoune",
     icon: ministre, // replace with lycée/academy logo
     iconBg: "#E6DEDD",
