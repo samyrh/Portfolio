@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 
 import { styles } from "../styles";
@@ -22,14 +22,25 @@ const ProjectCard = ({
   const [current, setCurrent] = useState(0);
   const hasCarousel = Array.isArray(images) && images.length > 0;
   const intervalRef = useRef();
+  const prefersReducedMotion = useReducedMotion();
+
+  const startAuto = () => {
+    if (!hasCarousel || prefersReducedMotion) return;
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 2500);
+  };
+
+  const stopAuto = () => {
+    clearInterval(intervalRef.current);
+  };
 
   useEffect(() => {
     if (!hasCarousel) return;
-    intervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 2000);
+    startAuto();
     return () => clearInterval(intervalRef.current);
-  }, [hasCarousel, images]);
+  }, [hasCarousel, images, prefersReducedMotion]);
 
   // Pause autoplay on manual navigation
   const handleManualNav = (nextIdx) => {
@@ -45,17 +56,23 @@ const ProjectCard = ({
       initial={{ opacity: 0, y: 40, scale: 0.96 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: false, amount: 0.3 }}
+      whileHover={undefined}
       transition={{ type: "spring", duration: 0.7, delay: index * 0.15, bounce: 0.25 }}
     >
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className='bg-tertiary p-2 rounded-lg w-full shadow-md hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 ease-in-out min-h-[420px]'
-      >
-        <div className='relative w-full h-[180px] rounded-md overflow-hidden'>
+      <div className='relative overflow-hidden rounded-lg'>
+        <Tilt
+          options={{
+            max: prefersReducedMotion ? 0 : 8,
+            scale: 1,
+            speed: 450,
+          }}
+          className={`bg-tertiary p-2 rounded-lg w-full shadow-md ${prefersReducedMotion ? '' : 'hover:shadow-xl'} transition-shadow duration-300 ease-out min-h-[420px]`}
+        >
+        <div
+          className='relative w-full h-[180px] rounded-md overflow-hidden'
+          onMouseEnter={stopAuto}
+          onMouseLeave={startAuto}
+        >
           {hasCarousel ? (
             <>
               <AnimatePresence initial={false}>
@@ -69,6 +86,8 @@ const ProjectCard = ({
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   draggable={false}
+                  loading="lazy"
+                  decoding="async"
                   style={{ backfaceVisibility: 'hidden', transform: 'translateZ(0)', willChange: 'opacity' }}
                 />
               </AnimatePresence>
@@ -95,6 +114,9 @@ const ProjectCard = ({
                 src={image}
                 alt='project_image'
                 className='w-full h-full object-cover rounded-md'
+                loading="lazy"
+                decoding="async"
+                draggable={false}
               />
             )
           )}
@@ -141,7 +163,8 @@ const ProjectCard = ({
             </p>
           ))}
         </div>
-      </Tilt>
+        </Tilt>
+      </div>
     </motion.div>
   );
 };
@@ -167,23 +190,31 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className='mt-20 px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-10'>
+      <div className='mt-20 px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-10 isolate'>
         {projects.map((project, index) => {
           const isStartOfLastPair = index === projects.length - 2;
           const isLast = index === projects.length - 1;
           if (isStartOfLastPair) {
             const nextProject = projects[index + 1];
             return (
-              <div key={`project-group-${index}`} className='lg:col-span-3'>
-                <div className='lg:flex lg:justify-center lg:gap-10'>
-                  <div className='lg:max-w-md w-full'>
-                    <ProjectCard index={index} {...project} />
-                  </div>
-                  <div className='lg:max-w-md w-full'>
-                    <ProjectCard index={index + 1} {...nextProject} />
+              <>
+                <div key={`project-${index}-sm`} className='lg:hidden'>
+                  <ProjectCard index={index} {...project} />
+                </div>
+                <div key={`project-${index + 1}-sm`} className='lg:hidden'>
+                  <ProjectCard index={index + 1} {...nextProject} />
+                </div>
+                <div key={`project-group-${index}-lg`} className='hidden lg:block lg:col-span-3'>
+                  <div className='lg:flex lg:justify-center lg:gap-10'>
+                    <div className='lg:max-w-md w-full'>
+                      <ProjectCard index={index} {...project} />
+                    </div>
+                    <div className='lg:max-w-md w-full'>
+                      <ProjectCard index={index + 1} {...nextProject} />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </>
             );
           }
           if (isLast) {
