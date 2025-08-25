@@ -27,9 +27,73 @@ import {
   carrent,
   jobit,
   tripguide,
-  threejs, emsi, bts, est, ministre, login, fruits, consul, img,
-  space1, space2, space3, space4, space5, space6, space7, space8, space9, space10, space11,
-  pizzer1, pizzer2, pizzer3, pizzer4, pizzer5, pizzer6, pizzer7, pizzer8, pizzer10, pizzer11, pizzer12, pizzer13, pizzer14,
+  threejs,
+  emsi,
+  bts,
+  est,
+  ministre,
+  login,
+  fruits,
+  consul,
+  img,
+  space1,
+  space2,
+  space3,
+  space4,
+  space5,
+  space6,
+  space7,
+  space8,
+  space9,
+  space10,
+  space11,
+  pizzer1,
+  pizzer2,
+  pizzer3,
+  pizzer4,
+  pizzer5,
+  pizzer6,
+  pizzer7,
+  pizzer8,
+  pizzer10,
+  pizzer11,
+  pizzer12,
+  pizzer13,
+  pizzer14,
+  spring,
+  security,
+  ai,
+  cloud,
+  jwt,
+  auth,
+  batch,
+  python,
+  laravel,
+  net,
+  vue,
+  bootstrap,
+  flutter,
+  rest,
+  graph,
+  redis,
+  kafka,
+  rabbit,
+  mysql,
+  postgres,
+  git1,
+  bit,
+  jen,
+  junit,
+  sel,
+  angular,
+  tensor,
+  keras,
+  scikit,
+  pandas,
+  mat,
+  num,
+  flask,
+  insomnia, swagger, postman, fast, intellij, webstorm, pycharm, anaconda, vscode,
 } from "../assets";
 
 export const navLinks = [
@@ -67,58 +131,77 @@ const services = [
 ];
 
 const technologies = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
+  // 🌐 Frontend
+  { name: "HTML 5", icon: html },
+  { name: "CSS 3", icon: css },
+  { name: "JavaScript", icon: javascript },
+  { name: "TypeScript", icon: typescript },
+  { name: "React JS", icon: reactjs },
+  { name: "Redux Toolkit", icon: redux },
+  { name: "AngularJS", icon: angular },
+  { name: "Vue.js", icon: vue },
+  { name: "Tailwind CSS", icon: tailwind },
+  { name: "Bootstrap", icon: bootstrap },
+  { name: "Flutter", icon: flutter },
+
+  // ⚙️ Backend & Frameworks
+  { name: "Node JS", icon: nodejs },
+  { name: "Spring Boot", icon: spring },
+  { name: "Spring Security", icon: security },
+  { name: "Spring Cloud", icon: cloud },
+  { name: "Spring Batch", icon: batch },
+  { name: "Spring AI", icon: ai },
+  { name: "JWT", icon: jwt },
+  { name: "OAuth2", icon: auth },
+  { name: "Laravel", icon: laravel },
+  { name: ".NET", icon: net },
+  { name: "Rest API", icon: rest },
+  { name: "Graphql", icon: graph },
+  { name: "Flask", icon: flask },
+  { name: "FastAPI", icon: fast },
+
+  // 🗄 Databases
+  { name: "MongoDB", icon: mongodb },
+  { name: "MySQL", icon: mysql },
+  { name: "PostgreSQL", icon: postgres },
+  { name: "Redis", icon: redis },
+
+  // 📩 Messaging & Streaming
+  { name: "Kafka", icon: kafka },
+  { name: "RabbitMQ", icon: rabbit },
+
+  // 🤖 Machine Learning / Data Science
+  { name: "Python", icon: python },
+  { name: "TensorFlow", icon: tensor },
+  { name: "Keras", icon: keras },
+  { name: "scikit-learn", icon: scikit },
+  { name: "Pandas", icon: pandas },
+  { name: "NumPy", icon: num },
+  { name: "Matplotlib", icon: mat },
+  { name: "Anaconda", icon: anaconda },
+
+  // 🔧 DevOps / Versioning
+  { name: "git", icon: git },
+  { name: "Github", icon: git1 },
+  { name: "Bitbucket", icon: bit },
+  { name: "docker", icon: docker },
+  { name: "Jenkins", icon: jen },
+
+  // 🧪 Testing
+  { name: "JUnit", icon: junit },
+  { name: "Selenium", icon: sel },
+
+  // 🛠 Tools & APIs
+  { name: "figma", icon: figma },
+  { name: "Postman", icon: postman },
+  { name: "Insomnia", icon: insomnia },
+  { name: "Swagger", icon: swagger },
+
+  // 💻 IDEs
+  { name: "IntelliJ IDEA", icon: intellij },
+  { name: "WebStorm IDEA", icon: webstorm },
+  { name: "PyCharm IDEA", icon: pycharm },
+  { name: "VS Code", icon: vscode },
 ];
 
 const experiences = [
@@ -190,27 +273,27 @@ const experiences = [
 const testimonials = [
   {
     testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+      "Exceptional full-stack developer with outstanding expertise in Spring Boot, React, and microservices. Delivered our e-Banking platform with remarkable attention to security and detail.",
+    name: "Nada Senahaji",
+    designation: "Software Engineer",
+    company: "",
+    image: "N",
   },
   {
     testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+      "A true full-stack professional who excels in both frontend and backend development. Built our AI platform with Spring AI and React, implementing complex features flawlessly.",
+    name: "Rabab Tamma",
+    designation: "Software Engineer",
+    company: "",
+    image: "R",
   },
   {
     testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+      "Outstanding developer with comprehensive full-stack skills. From Spring Security and authentication to React.js and microservices, they handle every layer with expertise.",
+    name: "Mehdi Tamanyati",
+    designation: "Software Engineer",
+    company: "",
+    image: "M",
   },
 ];
 
