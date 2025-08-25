@@ -7,16 +7,57 @@ import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 import spring from "./tech/spring.png";
+import mat from "./tech/mat.png";
+import webstorm from "./tech/webstorm.png";
+import vscode from "./tech/vscode.png";
+import pycharm from "./tech/pycharm.png";
+import swagger from "./tech/swagger.png";
+import insomnia from "./tech/insomnia.png";
+import num from "./tech/num.png";
+import rabbit from "./tech/rabbit.png";
+import flask from "./tech/flask.png";
+import fast from "./tech/fast.png";
+import scikit from "./tech/scikit.png";
+import pandas from "./tech/pandas.png";
+import postgres from "./tech/postgresql.png";
+import rest from "./tech/rest.png";
+import tensor from "./tech/tensor.png";
+import keras from "./tech/keras.png";
+import graph from "./tech/graphql.png";
+import vue from "./tech/vuejs.png";
+import ai from "./tech/ai.png";
+import anaconda from "./tech/anaconda.png";
 import css from "./tech/css.png";
+import sel from "./tech/sel.png";
+import angular from "./tech/ang.png";
+import net from "./tech/.net.png";
+import security from "./tech/security.png";
 import docker from "./tech/docker.png";
+import jen from "./tech/jen.png";
+import junit from "./tech/junit.png";
 import figma from "./tech/figma.png";
+import cloud from "./tech/cloud.png";
+import kafka from "./tech/kafka.png";
 import git from "./tech/git.png";
+import mysql from "./tech/mysql.png";
+import git1 from "./tech/github.png";
 import html from "./tech/html.png";
+import postman from "./tech/postman.png";
+import laravel from "./tech/laravel.png";
+import redis from "./tech/redis.png";
+import intellij from "./tech/intellij.png";
 import javascript from "./tech/javascript.png";
 import mongodb from "./tech/mongodb.png";
+import bit from "./tech/bitbucket.png";
 import nodejs from "./tech/nodejs.png";
+import bootstrap from "./tech/bootstrap.png";
+import flutter from "./tech/flutter.png";
 import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
+import python from "./tech/python.png";
+import jwt from "./tech/jwt.png";
+import auth from "./tech/auth.png";
+import batch from "./tech/batch.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
@@ -58,6 +99,8 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+
+
 export {
   logo,
   est,
@@ -91,18 +134,48 @@ export {
   backend,
   creator,
   mobile,
+  laravel,
   web,
+  mat,
+  mysql,
+  postgres,
+  net,
+  vue,
+  intellij,
+
+  angular,
+  scikit,
+  swagger,
+  tensor,
+  flutter,
+  rest,
   github,
   menu,
   close,
   css,
   docker,
+  cloud,
+  keras,
+  python,
+  jwt,
+  security,
+  junit,
+  sel,
+  ai,
   figma,
+  graph,
+  redis,
+  git1,
+  bit,
+  jen,
+  pandas,
   git,
   html,
   emsi,
   upm,
   bts,
+  auth,
+  batch,
   spring,
   javascript,
   mongodb,
@@ -113,17 +186,29 @@ export {
   typescript,
   threejs,
   s,
+  num,
+  flask,
   meta,
   shopify,
   starbucks,
   tesla,
+  kafka,
+  postman,
+  rabbit,
   hps,
   vinci,
   ocp,
   archi,
+  insomnia,
   carrent,
+  fast,
   jobit,
   tripguide,
   fruits,
+  webstorm,
+  vscode,
+  anaconda,
+  pycharm,
   consul,
+  bootstrap,
 };
