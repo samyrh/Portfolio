@@ -98,6 +98,16 @@
   -webkit-text-fill-color: transparent;
 }
 
+/* Shimmer animation for modern filter design */
+@keyframes shimmer {
+  0% {
+    background-position: -200% -200%;
+  }
+  100% {
+    background-position: 200% 200%;
+  }
+}
+
 .pink-text-gradient {
   background: #ec008c; /* fallback for old browsers */
   background: -webkit-linear-gradient(
