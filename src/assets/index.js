@@ -62,6 +62,7 @@ import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 import upm from "./company/upm.png";
+import linkedin from "./company/in.png"
 import meta from "./company/meta.png";
 import emsi from "./company/emsi.png";
 import shopify from "./company/shopify.png";
@@ -142,7 +143,7 @@ export {
   net,
   vue,
   intellij,
-
+  linkedin,
   angular,
   scikit,
   swagger,
