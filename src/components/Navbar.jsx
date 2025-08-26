@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import { navLinks } from "../constants";
-import { s, menu, close, linkedin, github } from "../assets";
-import engCv from "../assets/eng_cv.pdf";
-import frCv from "../assets/fr_cv.pdf";
+import { s, menu, close, linkedin, github } from "/public/assets";
+import engCv from "/public/assets/eng_cv.pdf";
+import frCv from "/public/assets/fr_cv.pdf";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");

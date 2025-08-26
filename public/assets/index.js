@@ -60,7 +60,7 @@ import auth from "./tech/auth.png";
 import batch from "./tech/batch.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
+import threejs from "../../public/assets/tech/threejs.svg";
 import upm from "./company/upm.png";
 import linkedin from "./company/in.png"
 import meta from "./company/meta.png";

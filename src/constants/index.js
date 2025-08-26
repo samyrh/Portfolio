@@ -94,7 +94,7 @@ import {
   num,
   flask,
   insomnia, swagger, postman, fast, intellij, webstorm, pycharm, anaconda, vscode,
-} from "../assets";
+} from "/public/assets";
 
 // constants/index.js
 export const navLinks = [
