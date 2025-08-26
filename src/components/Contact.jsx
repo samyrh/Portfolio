@@ -83,57 +83,78 @@ const Contact = () => {
       {/* Professional Toast Notification */}
       <AnimatePresence>
         {showToast && (
-          <motion.div
-            initial={{ opacity: 0, x: 300, y: 20 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            exit={{ opacity: 0, x: 300, y: 20 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className={`fixed bottom-6 right-6 z-[9999] px-6 py-4 rounded-xl shadow-2xl backdrop-blur-xl border ${
-              toastType === "success" 
-                ? "bg-green-500/90 border-green-400/50 text-white" 
-                : "bg-red-500/90 border-red-400/50 text-white"
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              <div className={`w-2 h-2 rounded-full ${
-                toastType === "success" ? "bg-green-300" : "bg-red-300"
-              }`} />
-              <span className="font-medium">{toastMessage}</span>
-            </div>
-          </motion.div>
+            <motion.div
+                initial={{opacity: 0, scale: 0.9, y: 60, filter: "blur(8px)"}}
+                animate={{opacity: 1, scale: 1, y: 0, filter: "blur(0px)"}}
+                exit={{opacity: 0, scale: 0.9, y: 60, filter: "blur(8px)"}}
+                transition={{type: "spring", stiffness: 200, damping: 24}}
+                className={`
+    fixed bottom-8 right-8 z-[9999] w-[420px] max-w-[90vw]
+    px-8 py-6 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.25)]
+    backdrop-blur-xl bg-white/10 border-[1.5px]
+    ${toastType === "success"
+                    ? "border-green-400/40 text-green-100"
+                    : "border-red-400/40 text-red-100"
+                }
+  `}
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-4xl mt-1">
+                  {toastType === "success" ? "🎉" : "🚫"}
+                </div>
+                <div className="flex-1 overflow-hidden">
+                  <p className="text-base font-medium leading-relaxed">
+                    {toastMessage}
+                  </p>
+
+                  {/* Progress Bar */}
+                  <div className="mt-4 h-2 rounded-full bg-white/10 overflow-hidden">
+                    <motion.div
+                        initial={{width: "100%"}}
+                        animate={{width: 0}}
+                        transition={{duration: 4, ease: "linear"}}
+                        className={`h-full rounded-full ${
+                            toastType === "success" ? "bg-green-400" : "bg-red-400"
+                        }`}
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
         )}
       </AnimatePresence>
 
       <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
-        className='flex-[0.75] bg-black-100 p-6 rounded-2xl max-w-md mx-auto xl:mx-0'
+          variants={slideIn("left", "tween", 0.2, 1)}
+          className='flex-[0.75] bg-black-100 p-6 rounded-2xl max-w-md mx-auto xl:mx-0'
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
         <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className='mt-8 flex flex-col gap-6'
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className='mt-8 flex flex-col gap-6'
         >
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-3 text-sm'>Your Name</span>
             <input
-              type='text'
-              name='name'
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your name?"
-              className='bg-tertiary py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none border-2 border-transparent focus:border-blue-400/50 focus:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300 text-sm'
+                type='text'
+                name='name'
+                value={form.name}
+                onChange={handleChange}
+                placeholder="What's your name?"
+                className='bg-tertiary py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none border-2 border-transparent focus:border-blue-400/50 focus:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300 text-sm'
             />
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-3 text-sm'>Your Email</span>
             <input
-              type='email'
-              name='email'
-              value={form.email}
-              onChange={handleChange}
+                type='email'
+                name='email'
+                value={form.email}
+                onChange={handleChange}
               placeholder="What's your email address?"
               className='bg-tertiary py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none border-2 border-transparent focus:border-blue-400/50 focus:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300 text-sm'
             />
@@ -155,15 +176,21 @@ const Contact = () => {
             disabled={loading}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className='bg-gradient-to-r from-blue-500 to-purple-600 py-3 px-6 rounded-lg outline-none w-fit text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
+            className='relative group overflow-hidden bg-gradient-to-r from-indigo-700 via-violet-700 to-fuchsia-700 py-3 px-8 rounded-full outline-none w-fit self-center text-white font-semibold shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
           >
+            <span className="absolute inset-0 rounded-full ring-1 ring-white/10" aria-hidden="true" />
+            <span className="absolute -inset-[3px] rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true">
+              <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.indigo.500),theme(colors.violet.500),theme(colors.fuchsia.500),theme(colors.indigo.500))] animate-[spin_2s_linear_infinite] blur-[0.5px]" aria-hidden="true" />
+              <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_180deg,theme(colors.fuchsia.500),theme(colors.violet.500),theme(colors.indigo.500),theme(colors.fuchsia.500))] animate-[spin_3s_linear_infinite] [animation-direction:reverse] opacity-70 blur-[1px]" aria-hidden="true" />
+            </span>
+            <span className="absolute inset-0 rounded-full [background:repeating-linear-gradient(135deg,rgba(255,255,255,0.08)_0px,rgba(255,255,255,0.08)_6px,transparent_6px,transparent_12px)] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] animate-[pulse_2.5s_ease-in-out_infinite]" aria-hidden="true" />
             {loading ? (
-              <div className="flex items-center gap-2">
+              <div className="relative z-10 flex items-center gap-2">
                 <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 Sending...
               </div>
             ) : (
-              "Send Message"
+              <span className="relative z-10">Send Message</span>
             )}
           </motion.button>
         </form>
