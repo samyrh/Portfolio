@@ -144,6 +144,7 @@ const About = () => {
                 </div>
 
                 {/* Profile image */}
+                {/* Profile image */}
                 <motion.div
                     variants={fadeIn("right", "spring", 0.4, 0.75)}
                     className="flex-shrink-0"
@@ -152,8 +153,10 @@ const About = () => {
                         <div className="w-72 h-72 rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#1E1B4B] via-[#312E81] to-[#3730A3] p-2">
                             <div className="w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-[#0F0F23] to-[#1A1A2E] relative">
                                 <img
-                                    src="/src/assets/sami.jpg"
+                                    src="/sami.jpg"                // ✅ file lives in public/sami.jpg
                                     alt="Sami Rhalim"
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-full object-contain rounded-xl transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#1E1B4B]/20 via-transparent to-transparent rounded-xl" />
@@ -161,6 +164,7 @@ const About = () => {
                         </div>
                     </div>
                 </motion.div>
+
             </div>
 
             {/* Services row — scrollbar hidden */}
