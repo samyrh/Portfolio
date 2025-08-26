@@ -96,20 +96,18 @@ import {
   insomnia, swagger, postman, fast, intellij, webstorm, pycharm, anaconda, vscode,
 } from "../assets";
 
+// constants/index.js
 export const navLinks = [
-  {
-    id: "about",
-    title: "About",
-  },
-  {
-    id: "work",
-    title: "Work",
-  },
-  {
-    id: "contact",
-    title: "Contact",
-  },
+  { id: "home",       title: "Home" },
+  { id: "about",      title: "About" },
+  { id: "experience", title: "Experience" },
+  { id: "education",  title: "Education" },
+  { id: "tech",       title: "Tech" },
+  { id: "works",      title: "Works" },     // or "Projects" if you prefer
+  { id: "feedbacks",  title: "Feedbacks" },
+  { id: "contact",    title: "Hire Me" },
 ];
+
 
 const services = [
   {
