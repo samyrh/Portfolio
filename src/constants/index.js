@@ -98,7 +98,6 @@ import {
 
 // constants/index.js
 export const navLinks = [
-  { id: "home",       title: "Home" },
   { id: "about",      title: "About" },
   { id: "experience", title: "Experience" },
   { id: "education",  title: "Education" },
@@ -111,21 +110,22 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
+    title: "Software Engineer | Microservices & Web Systems",
     icon: web,
   },
   {
-    title: "Java Spring Boot Developer",
+    title: "Java Spring Boot | Backend Development",
     icon: mobile,
   },
   {
-    title: "Backend Developer",
+    title: "Architecting Scalable Event-Driven Services",
     icon: backend,
   },
   {
-    title: "Front End Web & Mobile Developer",
+    title: "Front-End Engineer | Web & Mobile Interfaces",
     icon: creator,
   },
+
 ];
 
 const technologies = [
