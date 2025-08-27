@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 
@@ -18,19 +17,17 @@ const Hero = () => {
                 {/* text */}
                 <div>
                     <h1
-                        className={`text-white font-extrabold tracking-tight leading-snug
-              text-[2.65rem] sm:text-[3.3rem] md:text-[4rem]`}
+                        className={`text-white font-extrabold tracking-tight leading-snug text-[2.65rem] sm:text-[3.3rem] md:text-[4rem]`}
                     >
                         Hi, I'm <span className="text-[#915EFF]">Sami Rhalim</span>
                     </h1>
                     <p
-                        className={`mt-4 text-white-100 font-medium leading-relaxed
-              text-[1.2rem] sm:text-[1.35rem] md:text-[1.5rem]`}
+                        className={`mt-4 text-white-100 font-medium leading-relaxed text-[1.2rem] sm:text-[1.35rem] md:text-[1.5rem]`}
                     >
-                        I'm a Full Stack Software Engineer <br className="sm:block hidden" />
+                        Full Stack Software Engineer | Microservices Architect | Java JEE | Spring Boot<br className="sm:block hidden" />
                         Graduate from EMSI (École Marocaine des Sciences de l'Ingénieur){" "}
                         <br className="sm:block hidden" />
-                        (Yes, I’ve had more NullPointerExceptions than cups of coffee ☕)
+                        Yes, I’ve had more NullPointerExceptions than cups of coffee ☕
                     </p>
                 </div>
             </div>
@@ -43,11 +40,7 @@ const Hero = () => {
                     <div className="w-[28px] h-[52px] rounded-2xl border-[3px] border-secondary flex justify-center items-start p-1.5">
                         <motion.div
                             animate={{ y: [0, 20, 0] }}
-                            transition={{
-                                duration: 1.5,
-                                repeat: Infinity,
-                                repeatType: "loop",
-                            }}
+                            transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
                             className="w-2.5 h-2.5 rounded-full bg-secondary mb-1"
                         />
                     </div>
