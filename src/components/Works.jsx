@@ -171,63 +171,71 @@ const ProjectCard = ({
 
 const Works = () => {
   return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>My work</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-      </motion.div>
+      <>
+        <motion.div variants={textVariant()}>
+          <p className={`${styles.sectionSubText}`}>My work</p>
+          <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
+        </motion.div>
 
-      <div className='w-full flex'>
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
-        >
-          Following projects showcases my skills and experience through
-          real-world examples of my work. Each project is briefly described with
-          links to code repositories and live demos in it. It reflects my
-          ability to solve complex problems, work with different technologies,
-          and manage projects effectively.
-        </motion.p>
-      </div>
+        <div className='w-full flex'>
+          <motion.p
+              variants={fadeIn("", "", 0.1, 1)}
+              className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px] text-justify'
+          >
+            These projects illustrate my technical expertise and problem-solving capabilities through practical,
+            real-world implementations. Each one includes a clear description and references to the code repositories
+            available on{" "}
+            <a
+                href="https://github.com/samyrh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-400 hover:underline font-medium"
+            >
+              GitHub
+            </a>
+            , highlighting my ability to architect scalable systems, integrate diverse technologies, and deliver
+            high-quality solutions with strong project management practices.
+          </motion.p>
+        </div>
 
-      <div className='mt-20 px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-10 isolate'>
-        {projects.map((project, index) => {
-          const isStartOfLastPair = index === projects.length - 2;
-          const isLast = index === projects.length - 1;
-          if (isStartOfLastPair) {
-            const nextProject = projects[index + 1];
-            return (
-              <>
-                <div key={`project-${index}-sm`} className='lg:hidden'>
-                  <ProjectCard index={index} {...project} />
-                </div>
-                <div key={`project-${index + 1}-sm`} className='lg:hidden'>
-                  <ProjectCard index={index + 1} {...nextProject} />
-                </div>
-                <div key={`project-group-${index}-lg`} className='hidden lg:block lg:col-span-3'>
-                  <div className='lg:flex lg:justify-center lg:gap-10'>
-                    <div className='lg:max-w-md w-full'>
+        <div className='mt-20 px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-7 gap-x-10 isolate'>
+          {projects.map((project, index) => {
+            const isStartOfLastPair = index === projects.length - 2;
+            const isLast = index === projects.length - 1;
+            if (isStartOfLastPair) {
+              const nextProject = projects[index + 1];
+              return (
+                  <>
+                    <div key={`project-${index}-sm`} className='lg:hidden'>
                       <ProjectCard index={index} {...project} />
                     </div>
-                    <div className='lg:max-w-md w-full'>
+                    <div key={`project-${index + 1}-sm`} className='lg:hidden'>
                       <ProjectCard index={index + 1} {...nextProject} />
                     </div>
-                  </div>
+                    <div key={`project-group-${index}-lg`} className='hidden lg:block lg:col-span-3'>
+                      <div className='lg:flex lg:justify-center lg:gap-10'>
+                        <div className='lg:max-w-md w-full'>
+                          <ProjectCard index={index} {...project} />
+                        </div>
+                        <div className='lg:max-w-md w-full'>
+                          <ProjectCard index={index + 1} {...nextProject} />
+                        </div>
+                      </div>
+                    </div>
+                  </>
+              );
+            }
+            if (isLast) {
+              return null;
+            }
+            return (
+                <div key={`project-${index}`}>
+                  <ProjectCard index={index} {...project} />
                 </div>
-              </>
             );
-          }
-          if (isLast) {
-            return null;
-          }
-          return (
-            <div key={`project-${index}`}>
-              <ProjectCard index={index} {...project} />
-            </div>
-          );
-        })}
-      </div>
-    </>
+          })}
+        </div>
+      </>
   );
 };
 
