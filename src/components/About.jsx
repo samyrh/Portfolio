@@ -19,22 +19,22 @@ const ServiceCard = ({ index, title, icon }) => (
             transition: { type: "spring", stiffness: 120, damping: 20, delay: index * 0.07 },
         }}
         viewport={{ once: true, amount: 0.25 }}
-        whileHover={{ y: -10, scale: 1.02, zIndex: 50 }}
-        className="w-full max-w-[300px] relative overflow-visible group"
+        whileHover={{ y: -10, scale: 1.02 }}
+        className="w-full max-w-[300px] relative overflow-hidden isolate group"
     >
         <Tilt
             options={{ max: 15, perspective: 1100, scale: 1, speed: 500, glare: true, maxGlare: 0.25 }}
             className="relative h-full"
         >
             {/* Animated border gradient */}
-            <div className="relative p-[2px] rounded-[24px] overflow-hidden h-full">
+            <div className="relative p-[2px] rounded-[24px] overflow-hidden h-full isolate">
                 <div
                     className="
             absolute inset-0 rounded-[24px]
             before:content-[''] before:absolute before:inset-[-2px] before:rounded-[28px]
             before:[background:conic-gradient(from_var(--angle),#0ea5e9_0deg,#1e40af_120deg,#312e81_240deg,#0ea5e9_360deg)]
             before:animate-rotateBorder
-            before:opacity-80
+            before:opacity-80 z-0
           "
                     style={{ "--angle": "0deg" }}
                 />
@@ -53,24 +53,24 @@ const ServiceCard = ({ index, title, icon }) => (
                     {/* Shine sweep */}
                     <span
                         className="
-              pointer-events-none absolute -inset-1
+              pointer-events-none absolute inset-0
               bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent)]
               translate-x-[-130%] group-hover:translate-x-[130%]
-              transition-transform duration-[1200ms] ease-out rounded-[22px]
+              transition-transform duration-[1200ms] ease-out rounded-[22px] z-0
             "
                     />
 
                     {/* Glow hover effect */}
                     <span
                         className="
-              pointer-events-none absolute -inset-10 rounded-[28px]
+              pointer-events-none absolute inset-0 rounded-[28px]
               bg-[radial-gradient(70%_70%_at_50%_-20%,rgba(56,189,248,0.3),transparent_70%)]
-              opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[18px]
+              opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-[18px] z-0
             "
                     />
 
                     {/* Content */}
-                    <div className="relative z-10 px-7 py-8 h-full flex flex-col items-center justify-center gap-6">
+                    <div className="relative z-10 px-7 py-8 h-full flex flex-col items-center justify-center gap-6 pointer-events-auto">
                         {/* Icon with zoom + glow aura */}
                         <div className="relative">
                             <img
@@ -111,7 +111,7 @@ const ServiceCard = ({ index, title, icon }) => (
 
 const About = () => {
     return (
-        <>
+        <div className="relative z-0 overflow-hidden isolate pb-24">
             <motion.div variants={textVariant()}>
                 <p className={styles.sectionSubText}>Introduction</p>
                 <h2 className={styles.sectionHeadText}>Overview.</h2>
@@ -182,19 +182,19 @@ const About = () => {
                 </div>
 
                 {/* Profile image */}
-                <motion.div variants={fadeIn("right", "spring", 0.4, 0.75)}>
+                <motion.div variants={fadeIn("right", "spring", 0.4, 0.75)} className="relative z-0">
                     <FollowImage/>
                 </motion.div>
 
             </div>
 
             {/* Services grid — replaces horizontal scroll row */}
-            <div className="relative z-20 mt-20 px-4">
+            <div className="relative z-0 mt-20 px-4 isolate">
                 <div
                     className="
             grid gap-6 place-items-center
             grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
-            max-w-7xl mx-auto
+            max-w-7xl mx-auto pointer-events-none
           "
                 >
                     {services.map((service, index) => (
@@ -202,7 +202,7 @@ const About = () => {
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
