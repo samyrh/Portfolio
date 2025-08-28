@@ -172,27 +172,38 @@ const Contact = () => {
                     </label>
 
                     <motion.button
-                        type='submit'
-                        disabled={loading}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className='relative group overflow-hidden bg-gradient-to-r from-indigo-700 via-violet-700 to-fuchsia-700 py-3 px-8 rounded-full outline-none w-fit self-center text-white font-semibold shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
+                        type="submit"
+                        // disable if loading OR any field empty
+                        disabled={
+                            loading || !form.name.trim() || !form.email.trim() || !form.message.trim()
+                        }
+                        whileHover={{scale: 1.02}}
+                        whileTap={{scale: 0.98}}
+                        className="relative group overflow-hidden bg-gradient-to-r from-indigo-700 via-violet-700 to-fuchsia-700 py-3 px-8 rounded-full outline-none w-fit self-center text-white font-semibold shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        <span className="absolute inset-0 rounded-full ring-1 ring-white/10" aria-hidden="true" />
-                        <span className="absolute -inset-[3px] rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true">
-              <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.indigo.500),theme(colors.violet.500),theme(colors.fuchsia.500),theme(colors.indigo.500))] animate-[spin_2s_linear_infinite] blur-[0.5px]" aria-hidden="true" />
-              <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_180deg,theme(colors.fuchsia.500),theme(colors.violet.500),theme(colors.indigo.500),theme(colors.fuchsia.500))] animate-[spin_3s_linear_infinite] [animation-direction:reverse] opacity-70 blur-[1px]" aria-hidden="true" />
-            </span>
-                        <span className="absolute inset-0 rounded-full [background:repeating-linear-gradient(135deg,rgba(255,255,255,0.08)_0px,rgba(255,255,255,0.08)_6px,transparent_6px,transparent_12px)] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] animate-[pulse_2.5s_ease-in-out_infinite]" aria-hidden="true" />
+                        <span className="absolute inset-0 rounded-full ring-1 ring-white/10" aria-hidden="true"/>
+                        <span
+                            className="absolute -inset-[3px] rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                            aria-hidden="true">
+    <span
+        className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.indigo.500),theme(colors.violet.500),theme(colors.fuchsia.500),theme(colors.indigo.500))] animate-[spin_2s_linear_infinite] blur-[0.5px]"/>
+    <span
+        className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_180deg,theme(colors.fuchsia.500),theme(colors.violet.500),theme(colors.indigo.500),theme(colors.fuchsia.500))] animate-[spin_3s_linear_infinite] [animation-direction:reverse] opacity-70 blur-[1px]"/>
+  </span>
+                        <span
+                            className="absolute inset-0 rounded-full [background:repeating-linear-gradient(135deg,rgba(255,255,255,0.08)_0px,rgba(255,255,255,0.08)_6px,transparent_6px,transparent_12px)] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] animate-[pulse_2.5s_ease-in-out_infinite]"/>
+
                         {loading ? (
                             <div className="relative z-10 flex items-center gap-2">
-                                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                <div
+                                    className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"/>
                                 Sending...
                             </div>
                         ) : (
                             <span className="relative z-10">Send Message</span>
                         )}
                     </motion.button>
+
                 </form>
             </motion.div>
 
@@ -200,7 +211,7 @@ const Contact = () => {
                 variants={slideIn("right", "tween", 0.2, 1)}
                 className='xl:flex-1 xl:h-auto md:h-[500px] h-[300px]'
             >
-                <EarthCanvas />
+                <EarthCanvas/>
             </motion.div>
         </div>
     );
