@@ -64,27 +64,32 @@ const ExperienceCard = ({ experience }) => {
 
 const Experience = () => {
   return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-center`}>
-          What I have done so far
-        </p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>
-          Work Experience.
-        </h2>
-      </motion.div>
+      <div className='relative pt-6'>
+          <motion.div
+              variants={textVariant()}
+              initial="hidden"
+              whileInView="show"
+              viewport={{once: true, amount: 0.15, margin: "0px 0px -10% 0px"}}
+              className="mt-10 text-center relative z-10"
+          >
+              <p className={`${styles.sectionSubText}`}>What I have done so far</p>
+              <h2 className={`${styles.sectionHeadText} text-white mt-1 inline-block px-3 py-1 rounded`}>
+                  Work Experience.
+              </h2>
+          </motion.div>
 
-      <div className='mt-20 flex flex-col'>
-        <VerticalTimeline>
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-            />
-          ))}
-        </VerticalTimeline>
+
+          <div className='mt-20 flex flex-col'>
+              <VerticalTimeline>
+                  {experiences.map((experience, index) => (
+                      <ExperienceCard
+                          key={`experience-${index}`}
+                          experience={experience}
+                      />
+                  ))}
+              </VerticalTimeline>
+          </div>
       </div>
-    </>
   );
 };
 
