@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
 
 import { navLinks } from "../constants";
 import { s, menu, close, linkedin, github } from "/public/assets";
@@ -16,10 +17,17 @@ const Navbar = () => {
     const [toastMessage, setToastMessage] = useState("");
     const [toastType, setToastType] = useState("success");
 
+    // use portal only when DOM is available (avoids SSR issues)
+    const canUseDOM =
+        typeof window !== "undefined" && typeof document !== "undefined";
+
     // ↓ smaller offset to match smaller bar height
     const scrollOffsetPx = 62;
     const sectionIds = useMemo(() => navLinks.map((n) => n.id), []);
-    const idToTitle = useMemo(() => new Map(navLinks.map((n) => [n.id, n.title])), []);
+    const idToTitle = useMemo(
+        () => new Map(navLinks.map((n) => [n.id, n.title])),
+        []
+    );
     const observerRef = useRef(null);
 
     const showToastNotification = (message, type = "success") => {
@@ -51,6 +59,17 @@ const Navbar = () => {
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
+
+    // lock body scroll when modal is open
+    useEffect(() => {
+        if (!canUseDOM) return;
+        const body = document.body;
+        const prev = body.style.overflow;
+        if (cvOpen) body.style.overflow = "hidden";
+        return () => {
+            body.style.overflow = prev;
+        };
+    }, [cvOpen, canUseDOM]);
 
     const handleNavClick = (id, title) => (e) => {
         e.preventDefault();
@@ -127,7 +146,7 @@ const Navbar = () => {
         >
             {/* grid container */}
             <div className="relative w-full min-w-0 grid grid-cols-[auto_1fr_auto] items-center px-3 sm:px-6 md:px-12 lg:px-6">
-                {/* LEFT: logo + name (smaller) */}
+                {/* LEFT: logo + name */}
                 <Link
                     to="/"
                     className="flex items-center gap-2 sm:gap-2.5 md:gap-3"
@@ -146,7 +165,7 @@ const Navbar = () => {
           </span>
                 </Link>
 
-                {/* CENTER: desktop nav (smaller text + gaps) */}
+                {/* CENTER: desktop nav */}
                 <ul className="hidden sm:flex justify-self-center items-center gap-3 md:gap-4 lg:gap-5 xl:gap-6 px-1">
                     {navLinks
                         .filter((nav) => nav.id !== "contact")
@@ -166,16 +185,14 @@ const Navbar = () => {
                                 </a>
                                 <span
                                     className={`absolute left-0 -bottom-1 h-[2px] w-full rounded bg-white origin-left transition-transform duration-300 ${
-                                        active === nav.title
-                                            ? "scale-x-100"
-                                            : "scale-x-0 group-hover:scale-x-100"
+                                        active === nav.title ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                                     }`}
                                 />
                             </li>
                         ))}
                 </ul>
 
-                {/* RIGHT: desktop CTA (30% smaller) */}
+                {/* RIGHT: desktop CTAs */}
                 <div className="hidden sm:flex ml-auto items-center gap-2.5 md:gap-3">
                     {/* Hire Me */}
                     <a
@@ -248,7 +265,7 @@ const Navbar = () => {
                     </button>
                 </div>
 
-                {/* RIGHT: mobile menu button (smaller icon) */}
+                {/* RIGHT: mobile menu button */}
                 <div className="sm:hidden ml-auto flex items-center">
                     <button
                         aria-label="Toggle menu"
@@ -313,7 +330,7 @@ const Navbar = () => {
                                                 <span className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-700 via-violet-700 to-fuchsia-700 opacity-90" />
                                                 <span className="absolute inset-0 rounded-full ring-1 ring-white/10" />
                                                 <span className="absolute -inset-[3px] rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                          <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.indigo.500),theme(colors.violet.500),theme(colors.fuchsia.500),theme(colors.indigo.500))] animate-[spin_2s_linear_infinite] blur-[0.5px]" aria-hidden="true" />
+                          <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.indigo.500),theme(colors.violet.500),theme(colors.fuchsia.500),theme(colors.indigo.500))] animate-[spin_2s_linear_infinite] blur-[0.5px]" />
                         </span>
                                                 <span className="absolute inset-0 rounded-full [background:repeating-linear-gradient(135deg,rgba(255,255,255,0.08)_0px,rgba(255,255,255,0.08)_6px,transparent_6px,transparent_12px)] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] animate-[pulse_2.5s_ease-in-out_infinite]" />
                                                 <span className="relative z-10">Download CV</span>
@@ -330,11 +347,11 @@ const Navbar = () => {
                                                 <span className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-700 via-violet-700 to-fuchsia-700 opacity-90" />
                                                 <span className="absolute inset-0 rounded-full ring-1 ring-white/10" />
                                                 <span className="absolute -inset-[3px] rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                          <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.indigo.500),theme(colors.violet.500),theme(colors.fuchsia.500),theme(colors.indigo.500))] animate-[spin_2s_linear_infinite] blur-[0.5px]" aria-hidden="true" />
+                          <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.indigo.500),theme(colors.violet.500),theme(colors.fuchsia.500),theme(colors.indigo.500))] animate-[spin_2s_linear_infinite] blur-[0.5px]" />
                         </span>
                                                 <span className="absolute inset-0 rounded-full [background:repeating-linear-gradient(135deg,rgba(255,255,255,0.08)_0px,rgba(255,255,255,0.08)_6px,transparent_6px,transparent_12px)] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] animate-[pulse_2.5s_ease-in-out_infinite]" />
                                                 <span className="relative z-10 flex items-center justify-center gap-2">
-                          <img src={github} alt="" className="w-5 h-5 object-contain" aria-hidden="true" />
+                          <img src={github} alt="" className="w-5 h-5 object-contain" />
                           <span className="font-semibold">GitHub</span>
                         </span>
                                             </a>
@@ -350,11 +367,11 @@ const Navbar = () => {
                                                 <span className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-700 via-violet-700 to-fuchsia-700 opacity-90" />
                                                 <span className="absolute inset-0 rounded-full ring-1 ring-white/10" />
                                                 <span className="absolute -inset-[3px] rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                          <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.fuchsia.500),theme(colors.violet.500),theme(colors.indigo.500),theme(colors.fuchsia.500))] animate-[spin_2.4s_linear_infinite] [animation-direction:reverse] blur-[0.5px]" aria-hidden="true" />
+                          <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.fuchsia.500),theme(colors.violet.500),theme(colors.indigo.500),theme(colors.fuchsia.500))] animate-[spin_2.4s_linear_infinite] [animation-direction:reverse] blur-[0.5px]" />
                         </span>
                                                 <span className="absolute inset-0 rounded-full [background:repeating-linear-gradient(135deg,rgba(255,255,255,0.08)_0px,rgba(255,255,255,0.08)_6px,transparent_6px,transparent_12px)] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] animate-[pulse_2.5s_ease-in-out_infinite]" />
                                                 <span className="relative z-10 flex items-center justify-center gap-2 leading-none">
-                          <img src={linkedin} alt="" className="w-5 h-5 object-contain" aria-hidden="true" />
+                          <img src={linkedin} alt="" className="w-5 h-5 object-contain" />
                           <span className="font-semibold">LinkedIn</span>
                         </span>
                                             </a>
@@ -366,51 +383,68 @@ const Navbar = () => {
                     </AnimatePresence>
                 </div>
 
-                {cvOpen && (
-                    <div className="fixed inset-0 z-[60] flex items-center justify-center p-6" role="dialog" aria-modal="true">
-                        <div className="absolute inset-0 bg-black/60 backdrop-blur-md" onClick={() => setCvOpen(false)} />
-                        <div className="relative z-[61] w-full max-w-2xl rounded-3xl overflow-hidden">
-                            <div className="relative bg-gradient-to-b from-slate-900/90 to-slate-950/90 p-7 ring-1 ring-white/10">
-                                <div className="absolute -inset-[2px] rounded-3xl [background:radial-gradient(1200px_600px_at_10%_-20%,rgba(168,85,247,0.18),transparent_60%),radial-gradient(1200px_600px_at_110%_120%,rgba(236,72,153,0.14),transparent_60%)] pointer-events-none" />
-                                <h3 className="text-white text-xl font-extrabold tracking-tight">Download CV</h3>
-                                <p className="mt-1.5 text-sm text-white/70">Select your preferred language.</p>
+                {/* CV Modal (portal) */}
+                {canUseDOM &&
+                    cvOpen &&
+                    createPortal(
+                        <div
+                            className="fixed inset-0 z-[10000] flex items-center justify-center p-6"
+                            role="dialog"
+                            aria-modal="true"
+                        >
+                            {/* overlay */}
+                            <div
+                                className="absolute inset-0 bg-black/60 backdrop-blur-md"
+                                onClick={() => setCvOpen(false)}
+                            />
+                            {/* panel */}
+                            <div className="relative z-[10001] w-full max-w-2xl rounded-3xl overflow-hidden">
+                                <div className="relative bg-gradient-to-b from-slate-900/90 to-slate-950/90 p-7 ring-1 ring-white/10">
+                                    <div className="absolute -inset-[2px] rounded-3xl [background:radial-gradient(1200px_600px_at_10%_-20%,rgba(168,85,247,0.18),transparent_60%),radial-gradient(1200px_600px_at_110%_120%,rgba(236,72,153,0.14),transparent_60%)] pointer-events-none" />
+                                    <h3 className="text-white text-xl font-extrabold tracking-tight">
+                                        Download CV
+                                    </h3>
+                                    <p className="mt-1.5 text-sm text-white/70">
+                                        Select your preferred language.
+                                    </p>
 
-                                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                                    <button
-                                        onClick={() => handleDownload("en")}
-                                        className="group relative inline-flex items-center justify-center rounded-full px-5 py-3.5 text-white font-semibold ring-1 ring-white/10 overflow-hidden shadow-lg"
-                                    >
-                                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600" />
-                                        <span className="absolute -inset-[3px] rounded-full">
-                      <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.indigo.500),theme(colors.violet.500),theme(colors.fuchsia.500),theme(colors.indigo.500))] blur-[0.5px] [animation-play-state:paused] group-hover:animate-[spin_2.2s_linear_infinite]" />
-                    </span>
-                                        <span className="relative">Download English CV</span>
-                                    </button>
+                                    <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                                        <button
+                                            onClick={() => handleDownload("en")}
+                                            className="group relative inline-flex items-center justify-center rounded-full px-5 py-3.5 text-white font-semibold ring-1 ring-white/10 overflow-hidden shadow-lg"
+                                        >
+                                            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600" />
+                                            <span className="absolute -inset-[3px] rounded-full">
+                        <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.indigo.500),theme(colors.violet.500),theme(colors.fuchsia.500),theme(colors.indigo.500))] blur-[0.5px] [animation-play-state:paused] group-hover:animate-[spin_2.2s_linear_infinite]" />
+                      </span>
+                                            <span className="relative">Download English CV</span>
+                                        </button>
+
+                                        <button
+                                            onClick={() => handleDownload("fr")}
+                                            className="group relative inline-flex items-center justify-center rounded-full px-5 py-3.5 text-white font-semibold ring-1 ring-white/10 overflow-hidden shadow-lg"
+                                        >
+                                            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-fuchsia-600 via-violet-600 to-indigo-600" />
+                                            <span className="absolute -inset-[3px] rounded-full">
+                        <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.fuchsia.500),theme(colors.violet.500),theme(colors.indigo.500),theme(colors.fuchsia.500))] blur-[0.5px] [animation-play-state:paused] group-hover:animate-[spin_2.4s_linear_infinite] [animation-direction:reverse]" />
+                      </span>
+                                            <span className="relative">Télécharger CV Français</span>
+                                        </button>
+                                    </div>
 
                                     <button
-                                        onClick={() => handleDownload("fr")}
-                                        className="group relative inline-flex items-center justify-center rounded-full px-5 py-3.5 text-white font-semibold ring-1 ring-white/10 overflow-hidden shadow-lg"
+                                        onClick={() => setCvOpen(false)}
+                                        className="mt-7 w-full rounded-2xl bg-white/10 hover:bg-white/15 text-white py-2.5 font-semibold transition-colors"
                                     >
-                                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-fuchsia-600 via-violet-600 to-indigo-600" />
-                                        <span className="absolute -inset-[3px] rounded-full">
-                      <span className="absolute inset-0 rounded-full p-[2px] [background:conic-gradient(from_0deg,theme(colors.fuchsia.500),theme(colors.violet.500),theme(colors.indigo.500),theme(colors.fuchsia.500))] blur-[0.5px] [animation-play-state:paused] group-hover:animate-[spin_2.4s_linear_infinite] [animation-direction:reverse]" />
-                    </span>
-                                        <span className="relative">Télécharger CV Français</span>
+                                        Close
                                     </button>
                                 </div>
-
-                                <button
-                                    onClick={() => setCvOpen(false)}
-                                    className="mt-7 w-full rounded-2xl bg-white/10 hover:bg-white/15 text-white py-2.5 font-semibold transition-colors"
-                                >
-                                    Close
-                                </button>
                             </div>
-                        </div>
-                    </div>
-                )}
+                        </div>,
+                        document.body
+                    )}
 
-                {/* Toast */}
+                {/* Toast (you can also portal this if you like) */}
                 <AnimatePresence>
                     {showToast && (
                         <motion.div
@@ -422,7 +456,11 @@ const Navbar = () => {
                 fixed bottom-7 right-7 z-[9999] w-[380px] max-w-[92vw]
                 px-6 py-5 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.25)]
                 backdrop-blur-xl bg-white/10 border
-                ${toastType === "success" ? "border-green-400/40 text-green-100" : "border-red-400/40 text-red-100"}
+                ${
+                                toastType === "success"
+                                    ? "border-green-400/40 text-green-100"
+                                    : "border-red-400/40 text-red-100"
+                            }
               `}
                         >
                             <div className="flex items-start gap-3.5">
@@ -430,7 +468,9 @@ const Navbar = () => {
                                     {toastType === "success" ? "🎉" : "🚫"}
                                 </div>
                                 <div className="flex-1 overflow-hidden">
-                                    <p className="text-[15px] font-medium leading-relaxed">{toastMessage}</p>
+                                    <p className="text-[15px] font-medium leading-relaxed">
+                                        {toastMessage}
+                                    </p>
                                     <div className="mt-3 h-2 rounded-full bg-white/10 overflow-hidden">
                                         <motion.div
                                             initial={{ width: "100%" }}
