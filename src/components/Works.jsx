@@ -205,7 +205,7 @@ const Works = () => {
             if (isStartOfLastPair) {
               const nextProject = projects[index + 1];
               return (
-                  <>
+                  <React.Fragment key={`project-pair-${index}`}>
                     <div key={`project-${index}-sm`} className='lg:hidden'>
                       <ProjectCard index={index} {...project} />
                     </div>
@@ -222,7 +222,7 @@ const Works = () => {
                         </div>
                       </div>
                     </div>
-                  </>
+                  </React.Fragment>
               );
             }
             if (isLast) {
