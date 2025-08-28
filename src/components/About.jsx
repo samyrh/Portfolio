@@ -111,7 +111,7 @@ const ServiceCard = ({ index, title, icon }) => (
 
 const About = () => {
     return (
-        <div className="relative z-0 overflow-hidden isolate pb-24">
+        <div className="relative z-0 overflow-hidden isolate pb-10">
             <motion.div variants={textVariant()}>
                 <p className={styles.sectionSubText}>Introduction</p>
                 <h2 className={styles.sectionHeadText}>Overview.</h2>
