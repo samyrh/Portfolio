@@ -47,9 +47,7 @@
 ---
 
 ## 🤖 Introduction
-A modern **3D developer portfolio** demonstrating real-time 3D scenes, smooth micro-interactions, and performant animations. Built with **React + Three.js** via **React Three Fiber** and styled with **Tailwind CSS**. Sections include: 3D Hero, Work, Skills, Projects, Testimonials, and a 3D Earth Contact form powered by **EmailJS**.
-
-> Looking to showcase Java/Spring/Kafka work? Add case studies with metrics (e.g., _“Reduced processing latency by 35% with Kafka Streams”_).
+An advanced **3D developer portfolio** showcasing immersive real-time 3D experiences, fluid micro-interactions, and high-performance animations. Built with **React** and **Three.js** (via React Three Fiber), styled with **Tailwind CSS**, and architected for scalability and responsiveness. The portfolio features a dynamic 3D Hero, interactive Work and Skills sections, animated Projects and Testimonials, and a fully functional 3D Earth Contact form powered by **EmailJS**.
 
 ---
 
@@ -78,8 +76,6 @@ A modern **3D developer portfolio** demonstrating real-time 3D scenes, smooth mi
   <img src="https://images.unsplash.com/photo-1551281044-8e148f1fd3d0?q=80&w=1400&auto=format&fit=crop" alt="Preview 2" width="49%" />
 </p>
 
-> Replace with your own GIF/screenshots or recordings.
-
 ---
 
 ## 🤸 Quick Start
@@ -87,8 +83,8 @@ Ensure you have **Node.js ≥ 18** and **Git**.
 
 ```bash
 # 1) Clone
-git clone https://github.com/samyrh/project_3D_developer_portfolio.git
-cd project_3D_developer_portfolio
+git clone https://github.com/samyrh/Portfolio.git
+cd Portfolio
 
 # 2) Install
 npm install
@@ -129,21 +125,29 @@ VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
 
 ## 🗂 Project Structure
 
-```txt
-src/
-  assets/                # models, textures, images
-  components/
-    Canvas/              # 3D canvas scenes (R3F)
-    ui/                  # buttons, badges, cards
-  constants/             # nav, services, projects, tech
-  hooks/                 # custom hooks (e.g., useWindowSize)
-  lib/                   # emailjs, utils
-  styles/                # tailwind helpers, globals
-  App.jsx
-  main.jsx
 public/
-  favicon.svg
-```
+  assets/                # shared static assets (icons, gifs, pdfs, tech logos)
+    company/             # company logos
+    tech/                # technology stack icons
+    desktop_pc/          # 3D desktop model
+    planet/              # 3D planet model
+    logo.svg
+    sami.jpg
+  index.html
+
+src/
+  components/            # UI + 3D components
+  constants/             # nav, services, projects, tech data
+  hoc/                   # higher-order components (e.g., SectionWrapper)
+  utils/                 # helper functions
+  App.jsx
+  index.css              # global CSS / Tailwind imports
+  main.jsx               # React entry point
+  styles.js              # shared style objects (e.g., tailwind helpers)
+
+README.md
+.gitignore
+package-lock.json
 
 ---
 
@@ -177,8 +181,8 @@ public/
 
 ## 🙏 Acknowledgements
 
-* Inspired by **JavaScript Mastery**’s 3D portfolio concepts.
-* Three.js, React Three Fiber, and Drei communities for awesome tooling.
+* Powered by **Three.js**, **React Three Fiber**, and **Drei**, providing the core 3D and animation capabilities.  
+* Special thanks to the open-source community for the continuous development of these amazing tools.  
 
 ---
 
@@ -186,5 +190,4 @@ public/
 
 This project is open-sourced under the **MIT License**. You are free to use, modify, and distribute.
 
-```
 
