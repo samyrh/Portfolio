@@ -1,7 +1,7 @@
 
 <p align="center">
   <a href="https://samirhalim.vercel.app" target="_blank">
-    <img src="https://raw.githubusercontent.com/samyrh/Portfolio/public/assets/gif.gif" alt="3D Developer Portfolio Banner" width="100%" />
+    <img src="https://raw.githubusercontent.com/samyrh/Portfolio/master/public/assets/gif.gif" alt="3D Developer Portfolio Banner" width="100%" />
   </a>
 </p>
 
