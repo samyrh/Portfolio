@@ -72,9 +72,11 @@ An advanced **3D developer portfolio** showcasing immersive real-time 3D experie
 
 ## 🖼️ Preview
 <p align="center">
-  <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1400&auto=format&fit=crop" alt="Preview 1" width="49%" />
-  <img src="https://images.unsplash.com/photo-1551281044-8e148f1fd3d0?q=80&w=1400&auto=format&fit=crop" alt="Preview 2" width="49%" />
+  <video src="https://raw.githubusercontent.com/samyrh/Portfolio/master/public/assets/portfolio.mp4"
+         width="100%" controls playsinline>
+  </video>
 </p>
+
 
 ---
 
