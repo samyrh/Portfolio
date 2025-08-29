@@ -1,10 +1,11 @@
 
-<!-- Banner -->
 <p align="center">
   <a href="https://samirhalim.vercel.app" target="_blank">
-    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop" alt="3D Developer Portfolio Banner" width="100%" />
+    <img src="public/assets/gif.gif" alt="3D Developer Portfolio Banner" width="100%" />
   </a>
 </p>
+
+
 
 <h1 align="center">3D Developer Portfolio</h1>
 <p align="center">
